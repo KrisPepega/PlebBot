@@ -20,4 +20,10 @@ async def on_message(message):
     if message.content == 'hello':
         await message.channel.send("Hi there!")
 
+    if message.attachments:
+        for attach in message.attachments:
+            emoji = '\N{THUMBS UP SIGN}'
+            await message.add_reaction(emoji)
+            await message.channel.send(attach.url)
+
 client.run(token)
